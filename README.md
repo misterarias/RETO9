@@ -70,5 +70,7 @@ import org.apache.spark.rdd.RDD
 Con estas herramientas, se pide resolver la pregunta de "Cual es la pagina de Wikipedia mas importante a menos de dos grados de distancia de Blue Box?". Para entender la pregunta y saber como resolverla, se pueden seguir los siguientes enlaces:
 
 http://ampcamp.berkeley.edu/big-data-mini-course/graph-analytics-with-graphx.html
+
 http://semanticweb.cs.vu.nl/R/wikipedia_graph/wikipedia_graph.html
+
 http://www.sparktutorials.net/analyzing-flight-data:-a-gentle-introduction-to-graphx-in-spark
