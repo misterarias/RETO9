@@ -8,24 +8,52 @@ Aunque se puede realizar este ejercicio con otros entornos, para preparar las in
 
 ### Instalacion de R
 
-Ejecutar:
-
-<code>
+<pre>
 sudo sh -c 'echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" >> /etc/apt/sources.list'
-
 gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
-
 gpg -a --export E084DAB9 | sudo apt-key add -
-
 sudo apt-get update
-
 sudo apt-get -y install r-base
+</pre>
 
-</code>
+### Instalacion de Java
+
+<pre>
+sudo apt-add-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java7-installer
+</pre>
 
 ### Instalacion de Spark
 
+Bajarse spark-1.6.3-bin-hadoop2.6.tgz de http://spark.apache.org/downloads.html
+
+<pre>
+sudo mkdir /usr/local/src/scala
+sudo tar xvf spark-1.6.3-bin-hadoop2.6.tgz -C /usr/local/src/scala/
+echo "export SCALA_HOME=/usr/local/src/scala/scala/spark-1.6.3-bin-hadoop2.6" >> .bashrc
+echo "export PATH=$SCALA_HOME/bin:$PATH" >> .bashrc
+. .bashrc
+</pre>
+
 ## Creacion de datos
+
+<pre>
+wget http://semanticweb.cs.vu.nl/R/wikipedia_graph/crawler.R
+R
+</pre>
+
+Los siguientes comandos son dentro del shell de R:
+
+<pre>
+install.packages(c('RCurl','XML','igraph','bitops'),dependencies=TRUE)
+source("crawler.R")
+g <- crawl(
+</pre>
+
+
+g <- crawl(, 1)
+
 
 ## Procesamiento
 
