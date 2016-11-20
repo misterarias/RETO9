@@ -59,7 +59,7 @@ save.graph(blue_box_2, "blue_box_2")
 ## Procesamiento
 
 <pre>
-spark-shell
+spark-shell --packages com.databricks:spark-csv_2.11:1.2.0
 </pre>
 
 Los siguientes comandos son dentro del shell de Spark:
@@ -67,30 +67,16 @@ Los siguientes comandos son dentro del shell de Spark:
 <pre>
 import org.apache.spark.graphx._
 import org.apache.spark.rdd.RDD
+import scala.util.MurmurHash
 
-val vertexArray = Array(
-  (1L, ("Alice", 28)),
-  (2L, ("Bob", 27)),
-  (3L, ("Charlie", 65)),
-  (4L, ("David", 42)),
-  (5L, ("Ed", 55)),
-  (6L, ("Fran", 50))
-  )
-val edgeArray = Array(
-  Edge(2L, 1L, 7),
-  Edge(2L, 4L, 2),
-  Edge(3L, 2L, 4),
-  Edge(3L, 6L, 3),
-  Edge(4L, 1L, 1),
-  Edge(5L, 2L, 2),
-  Edge(5L, 3L, 8),
-  Edge(5L, 6L, 3)
-  )
-  
-val vertexRDD: RDD[(Long, (String, Int))] = sc.parallelize(vertexArray)
-val edgeRDD: RDD[Edge[Int]] = sc.parallelize(edgeArray)
-
-val graph: Graph[(String, Int), Int] = Graph(vertexRDD, edgeRDD)
+val blue_box_2 = sqlContext.read.format("com.databricks.spark.csv").option("header", "true").load("blue_box_2.csv")
+val linksToFrom = blue_box_2.select($"Source", $"Target")
+val pageNames = blue_box_2.select($"Source", $"Target").flatMap(x => Iterable(x(0).toString, x(1).toString))
+val pageVertices: RDD[(VertexId, String)] = pageNames.distinct().map(x => (MurmurHash.stringHash(x), x))
+val linkEdges = linksToFrom.map(x => ((MurmurHash.stringHash(x(0).toString),MurmurHash.stringHash(x(1).toString)), 1)).reduceByKey(_+_).map(x => Edge(x._1._1, x._1._2,x._2))
+val graph = Graph(pageVertices, linkEdges)
+graph.numVertices // 475
+graph.numEdges // 499
 </pre>
 
 ## Pregunta
