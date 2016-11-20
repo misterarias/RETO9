@@ -32,7 +32,7 @@ Bajarse spark-1.6.3-bin-hadoop2.6.tgz de http://spark.apache.org/downloads.html
 sudo mkdir /usr/local/src/scala
 sudo tar xvf spark-1.6.3-bin-hadoop2.6.tgz -C /usr/local/src/scala/
 echo "export SCALA_HOME=/usr/local/src/scala/scala/spark-1.6.3-bin-hadoop2.6" >> .bashrc
-echo "export PATH=$SCALA_HOME/bin:$PATH" >> .bashrc
+echo 'export PATH=$SCALA_HOME/bin:$PATH' >> .bashrc
 . .bashrc
 </pre>
 
