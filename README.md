@@ -48,16 +48,22 @@ Los siguientes comandos son dentro del shell de R:
 <pre>
 install.packages(c('RCurl','XML','igraph','bitops'),dependencies=TRUE)
 source("crawler.R")
-g <- crawl(
+blue_box_2 <- crawl("https://simple.wikipedia.org/wiki/Blue_box", 2)
+save.graph(blue_box_2, "blue_box_2")
 </pre>
-
-
-g <- crawl(, 1)
-
 
 ## Procesamiento
 
-"spark-shell --packages com.databricks:spark-csv_2.11:1.2.0"
+<pre>
+spark-shell --packages com.databricks:spark-csv_2.11:1.2.0
+</pre>
+
+Los siguientes comandos son dentro del shell de Spark:
+
+<pre>
+import org.apache.spark.graphx._
+import org.apache.spark.rdd.RDD
+</pre>
 
 http://stat-computing.org/dataexpo/2009/the-data.html
 
