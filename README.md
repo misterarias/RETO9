@@ -4,7 +4,18 @@ En esta propuesta de actividad vamos a manejar datos usando procesamiento de gra
 
 ## Preparacion del entorno de trabajo
 
+Aunque se puede realizar este ejercicio con otros entornos, para preparar las instrucciones se ha usado una maquina virtual con Ubuntu 14.04, asi que las instrucciones deben funcionar sin cambios en ese entorno.
+
 ### Instalacion de R
+
+Ejecutar:
+<code>
+sudo sh -c 'echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" >> /etc/apt/sources.list'
+gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
+gpg -a --export E084DAB9 | sudo apt-key add -
+sudo apt-get update
+sudo apt-get -y install r-base
+</code>
 
 ### Instalacion de Spark
 
