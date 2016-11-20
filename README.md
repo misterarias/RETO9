@@ -1,3 +1,6 @@
+
+![Graph](https://raw.githubusercontent.com/germanblanco/RETO9/master/graph.png "Graph")
+
 # RETO9 - Uso de GraphX
 
 En esta propuesta de actividad vamos a manejar datos usando procesamiento de grafos. En primer lugar crearemos un set de datos usando R y despues lo procesaremos usando Spark GraphX.
