@@ -9,7 +9,7 @@ Aunque se puede realizar este ejercicio con otros entornos, para preparar las in
 ### Instalacion de R
 
 <pre>
-sudo apt-get install libxml2-dev libx11-dev libglu1-mesa-dev freeglut3-dev mesa-common-dev
+sudo apt-get install libxml2-dev libx11-dev libglu1-mesa-dev freeglut3-dev mesa-common-dev libcurl4-gnutls-dev
 sudo sh -c 'echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" >> /etc/apt/sources.list'
 gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
 gpg -a --export E084DAB9 | sudo apt-key add -
