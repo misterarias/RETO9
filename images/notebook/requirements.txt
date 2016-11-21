@@ -1,0 +1,5 @@
+requests
+kafka-python
+PyYaml
+urllib3
+python-twitter

@@ -1,0 +1,11 @@
+---
+version: '2'
+services:
+    notebook:
+        build: ./images/notebook/
+        expose:
+            - 8888
+        ports:
+            - 8888:8888
+        volumes:
+            - ./notebooks:/home/jovyan/work/
