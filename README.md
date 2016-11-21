@@ -7,9 +7,20 @@ En esta propuesta de actividad vamos a manejar datos usando procesamiento de gra
 
 ## Preparacion del entorno de trabajo
 
+### 1. Modo _easy_
+
+Se proporciona un entorno en Docker, con todas las librerías instaladas (y muchas más)
+
+<pre>
+    docker-compose up -d
+    # xdg-open localhost:8888
+</pre>
+
+### 2. Modo _hard&painful_
+
 Aunque se puede realizar este ejercicio con otros entornos, para preparar las instrucciones se ha usado una maquina virtual con Ubuntu 14.04, asi que las instrucciones deben funcionar sin cambios en ese entorno.
 
-### Instalacion de R
+#### Instalacion de R
 
 <pre>
 sudo apt-get install libxml2-dev libx11-dev libglu1-mesa-dev freeglut3-dev mesa-common-dev libcurl4-gnutls-dev
@@ -20,7 +31,7 @@ sudo apt-get update
 sudo apt-get -y install r-base
 </pre>
 
-### Instalacion de Java
+#### Instalacion de Java
 
 <pre>
 sudo apt-add-repository ppa:webupd8team/java
@@ -28,7 +39,7 @@ sudo apt-get update
 sudo apt-get install oracle-java7-installer
 </pre>
 
-### Instalacion de Spark
+#### Instalacion de Spark
 
 Bajarse spark-1.6.3-bin-hadoop2.6.tgz de http://spark.apache.org/downloads.html
 
@@ -40,7 +51,7 @@ echo 'export PATH=$SCALA_HOME/bin:$PATH' >> .bashrc
 . .bashrc
 </pre>
 
-## Creacion de datos
+### Creacion de datos
 
 <pre>
 wget http://semanticweb.cs.vu.nl/R/wikipedia_graph/crawler.R
@@ -56,7 +67,7 @@ blue_box_2 <- crawl("https://simple.wikipedia.org/wiki/Blue_box", 2)
 save.graph(blue_box_2, "blue_box_2")
 </pre>
 
-## Procesamiento
+### Procesamiento
 
 <pre>
 spark-shell --packages com.databricks:spark-csv_2.11:1.2.0
